@@ -1,0 +1,15 @@
+numpy==1.26.4; python_version < "3.13"
+numpy==2.2.6; python_version >= "3.13"
+pandas==2.2.3
+scipy==1.14.1
+scikit-learn==1.6.1
+scikit-image==0.25.2
+opencv-python-headless==4.11.0.86
+Pillow==11.1.0
+transformers==4.51.3
+huggingface_hub==0.36.0
+safetensors>=0.5.3
+joblib==1.4.2
+diffusers==0.35.1
+accelerate==1.7.0
+sentencepiece==0.2.0
