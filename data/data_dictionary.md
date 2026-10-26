@@ -1,0 +1,11 @@
+# Data dictionary
+
+`S1_Main_Cohort_Manifest.csv` contains 462 images. `image_id` identifies a variant; `artifact_id` identifies its source; `group` is the source/product partition unit; `category` records retail category. `generator` identifies original, SD1.5 or SDXL images; `label` is 0 for supplied originals and 1 for controlled edits. `alpha_*` fields describe the saved source mask; `generation_*` fields retain edit settings, prompts, seeds, model revisions and change measurements. `Figure_S1_example` identifies the six displayed masks. `probability_*` columns contain final model scores.
+
+`S2_External_Manifest.csv` contains 5,590 FraudBench images. Identity, category, generator and dataset labels accompany `hf_relative` (dataset path), `raw_sha256` (raw-file hash), and final `probability_*` scores. The grouping unit is the review group.
+
+`S3_Model_Metrics.csv` uses `record_type` to separate 24 `condition_metrics`, 16 `paired_comparison`, 12 `compression_metrics`, 24 `fold_policy_summary` and 272 `benign_prediction` records. AUROC is `auc`; average precision is `ap`; `brier`, `log_loss` and `ece_10` quantify probability error. `auc_lo`/`auc_hi` are source-group bootstrap limits; `fpr`/`tpr` are false/true-positive rates. Confusion counts and category-macro balanced accuracy retain their named columns. Paired rows record source-group log-loss differences, paired `dz`, unadjusted `p` and Holm-adjusted `p_holm_all_declared_comparisons`.
+
+`S4_Operating_Policies.csv` contains 1,656 `operating_point`, 864 `review_scenario` and 24 `scenario_summary` records. `evaluation`, `model`, `seed` and `fold` identify the population and frozen head. `threshold`, `selection_fpr` and `selection_tpr` describe calibration selection; `fpr` and `tpr` describe achieved independent-group errors. `cost_fp_to_fn` is cFP/cFN; prevalence fields are assumed edited-image proportions. Expected counts use 10,000 images. `probability_scope` distinguishes individual frozen-head policies from final mean scores.
+
+Rates and probabilities are fractions unless a field explicitly states a percentage. Empty cells mean not applicable or not recorded. `config/data_schema.json` maps the consolidated columns to the logical analysis records and retains category accounting, mask distributions and partition audit records.
