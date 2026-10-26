@@ -1,0 +1,2631 @@
+{
+  "version": "RefundProof compact supplement 2026-10-22",
+  "notes": "CSV values retain original precision. Empty fields mean not applicable or not recorded; they are not zeros. Summary and individual records are distinguished by record_type.",
+  "record_map": {
+    "S10_main_cohort.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label"
+      }
+    },
+    "S9_external_cohort.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "hf_relative": "hf_relative",
+        "raw_sha256": "raw_sha256"
+      }
+    },
+    "S1_alpha_masks_by_source.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "artifact_id": "artifact_id",
+        "category": "category",
+        "intended_damage": "alpha_intended_damage",
+        "alpha_support_fraction": "alpha_alpha_support_fraction",
+        "alpha_mean": "alpha_alpha_mean",
+        "bbox_area_fraction": "alpha_bbox_area_fraction",
+        "centroid_x_normalized": "alpha_centroid_x_normalized",
+        "centroid_y_normalized": "alpha_centroid_y_normalized",
+        "shape": "alpha_shape"
+      },
+      "where": {
+        "generator": "sd15"
+      }
+    },
+    "S8_generation_parameters.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "artifact_id": "artifact_id",
+        "generator": "generator",
+        "model_repo": "generation_model_repo",
+        "model_revision": "generation_model_revision",
+        "prompt": "generation_prompt",
+        "negative_prompt": "generation_negative_prompt",
+        "seed": "generation_seed",
+        "steps": "generation_steps",
+        "canvas": "generation_canvas",
+        "model_canvas": "generation_model_canvas",
+        "changed_fraction": "generation_changed_fraction",
+        "outside_support_max_difference": "generation_outside_support_max_difference"
+      },
+      "where": {
+        "generator": [
+          "sd15",
+          "sdxl"
+        ]
+      }
+    },
+    "summary_metrics.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "model": "model",
+        "evaluation": "evaluation",
+        "n": "n",
+        "real": "real",
+        "fake": "fake",
+        "auc": "auc",
+        "ap": "ap",
+        "brier": "brier",
+        "log_loss": "log_loss",
+        "ece_10": "ece_10",
+        "balanced_accuracy": "balanced_accuracy",
+        "macro_category_balanced_accuracy": "macro_category_balanced_accuracy",
+        "fpr": "fpr",
+        "tpr": "tpr",
+        "real_n": "real_n",
+        "fake_n": "fake_n",
+        "false_positives": "false_positives",
+        "false_negatives": "false_negatives",
+        "auc_lo": "auc_lo",
+        "auc_hi": "auc_hi"
+      },
+      "where": {
+        "record_type": "condition_metrics"
+      }
+    },
+    "S11_all_model_conditions.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "model": "model",
+        "evaluation": "evaluation",
+        "n": "n",
+        "real": "real",
+        "fake": "fake",
+        "auc": "auc",
+        "ap": "ap",
+        "brier": "brier",
+        "log_loss": "log_loss",
+        "ece_10": "ece_10",
+        "balanced_accuracy": "balanced_accuracy",
+        "macro_category_balanced_accuracy": "macro_category_balanced_accuracy",
+        "fpr": "fpr",
+        "tpr": "tpr",
+        "real_n": "real_n",
+        "fake_n": "fake_n",
+        "false_positives": "false_positives",
+        "false_negatives": "false_negatives",
+        "auc_lo": "auc_lo",
+        "auc_hi": "auc_hi"
+      },
+      "where": {
+        "record_type": "condition_metrics"
+      }
+    },
+    "paired_model_comparisons.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "evaluation": "evaluation",
+        "model": "model",
+        "reference": "reference",
+        "source_groups": "source_groups",
+        "mean_group_logloss_difference": "mean_group_logloss_difference",
+        "paired_dz": "paired_dz",
+        "p": "p",
+        "interpretation": "interpretation",
+        "p_holm_all_declared_comparisons": "p_holm_all_declared_comparisons"
+      },
+      "where": {
+        "record_type": "paired_comparison"
+      }
+    },
+    "paired_comparisons.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "evaluation": "evaluation",
+        "model": "model",
+        "reference": "reference",
+        "source_groups": "source_groups",
+        "mean_group_logloss_difference": "mean_group_logloss_difference",
+        "paired_dz": "paired_dz",
+        "p": "p",
+        "interpretation": "interpretation",
+        "p_holm_all_declared_comparisons": "p_holm_all_declared_comparisons"
+      },
+      "where": {
+        "record_type": "paired_comparison"
+      }
+    },
+    "compression_summary.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "model": "model",
+        "quality": "quality",
+        "n": "n",
+        "real": "real",
+        "fake": "fake",
+        "auc": "auc",
+        "ap": "ap",
+        "brier": "brier",
+        "log_loss": "log_loss",
+        "ece_10": "ece_10",
+        "balanced_accuracy": "balanced_accuracy",
+        "macro_category_balanced_accuracy": "macro_category_balanced_accuracy",
+        "fpr": "fpr",
+        "tpr": "tpr",
+        "real_n": "real_n",
+        "fake_n": "fake_n",
+        "false_positives": "false_positives",
+        "false_negatives": "false_negatives"
+      },
+      "where": {
+        "record_type": "compression_metrics"
+      }
+    },
+    "fold_policy_summary.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "model": "model",
+        "evaluation": "evaluation",
+        "target": "target",
+        "mean_fold_fpr": "mean_fold_fpr",
+        "mean_fold_tpr": "mean_fold_tpr",
+        "max_fold_fpr": "max_fold_fpr"
+      },
+      "where": {
+        "record_type": "fold_policy_summary"
+      }
+    },
+    "S5_operational_scenarios_all_frozen_heads.csv": {
+      "file": "S4_Operating_Policies.csv",
+      "columns": {
+        "model": "model",
+        "evaluation": "evaluation",
+        "seed": "seed",
+        "fold": "fold",
+        "calibration_FPR_target": "calibration_FPR_target",
+        "assumed_prevalence": "assumed_prevalence",
+        "expected_flagged_per_10000": "expected_flagged_per_10000",
+        "expected_detected_edits": "expected_detected_edits",
+        "expected_false_alerts": "expected_false_alerts",
+        "expected_missed_edits": "expected_missed_edits",
+        "scenario_precision": "scenario_precision"
+      },
+      "where": {
+        "record_type": "review_scenario"
+      }
+    },
+    "S6_scenario_summary.csv": {
+      "file": "S4_Operating_Policies.csv",
+      "columns": {
+        "model": "model",
+        "prevalence": "prevalence",
+        "calibration_FPR_target": "calibration_FPR_target",
+        "mean_flagged": "mean_flagged",
+        "mean_detected": "mean_detected",
+        "mean_false_alerts": "mean_false_alerts",
+        "mean_missed": "mean_missed",
+        "policies": "policies"
+      },
+      "where": {
+        "record_type": "scenario_summary"
+      }
+    },
+    "ForgeLens_GenImage_GlobalCal_benign.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "image_id": "image_id",
+        "probability": "probability"
+      },
+      "where": {
+        "record_type": "benign_prediction",
+        "model": "ForgeLens_GenImage_GlobalCal"
+      }
+    },
+    "ForgeLens_GenImage_GlobalCal_external.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_GlobalCal"
+      }
+    },
+    "ForgeLens_GenImage_GlobalCal_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_GlobalCal"
+      }
+    },
+    "ForgeLens_GenImage_GlobalCal_operating_points.csv": {
+      "file": "S4_Operating_Policies.csv",
+      "columns": {
+        "model": "model",
+        "seed": "seed",
+        "fold": "fold",
+        "evaluation": "evaluation",
+        "probability_scope": "probability_scope",
+        "policy": "policy",
+        "target": "target",
+        "threshold": "threshold",
+        "selection_fpr": "selection_fpr",
+        "selection_tpr": "selection_tpr",
+        "fpr": "fpr",
+        "tpr": "tpr",
+        "real_n": "real_n",
+        "fake_n": "fake_n",
+        "false_positives": "false_positives",
+        "false_negatives": "false_negatives",
+        "cost_fp_to_fn": "cost_fp_to_fn",
+        "prevalence": "prevalence",
+        "expected_calibration_cost": "expected_calibration_cost",
+        "expected_test_cost": "expected_test_cost"
+      },
+      "where": {
+        "record_type": "operating_point",
+        "model": "ForgeLens_GenImage_GlobalCal"
+      }
+    },
+    "ForgeLens_GenImage_GlobalPatchFusion_benign.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "image_id": "image_id",
+        "probability": "probability"
+      },
+      "where": {
+        "record_type": "benign_prediction",
+        "model": "ForgeLens_GenImage_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_GenImage_GlobalPatchFusion_external.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_GenImage_GlobalPatchFusion_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_GenImage_GlobalPatchFusion_operating_points.csv": {
+      "file": "S4_Operating_Policies.csv",
+      "columns": {
+        "model": "model",
+        "seed": "seed",
+        "fold": "fold",
+        "evaluation": "evaluation",
+        "probability_scope": "probability_scope",
+        "policy": "policy",
+        "target": "target",
+        "threshold": "threshold",
+        "selection_fpr": "selection_fpr",
+        "selection_tpr": "selection_tpr",
+        "fpr": "fpr",
+        "tpr": "tpr",
+        "real_n": "real_n",
+        "fake_n": "fake_n",
+        "false_positives": "false_positives",
+        "false_negatives": "false_negatives",
+        "cost_fp_to_fn": "cost_fp_to_fn",
+        "prevalence": "prevalence",
+        "expected_calibration_cost": "expected_calibration_cost",
+        "expected_test_cost": "expected_test_cost"
+      },
+      "where": {
+        "record_type": "operating_point",
+        "model": "ForgeLens_GenImage_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_GenImage_OfficialCanonical_external_repeated_challenge.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_OfficialCanonical"
+      }
+    },
+    "ForgeLens_GenImage_OfficialCanonical_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_OfficialCanonical"
+      }
+    },
+    "ForgeLens_GenImage_OfficialNative_external_repeated_challenge.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_OfficialNative"
+      }
+    },
+    "ForgeLens_GenImage_WholeImageRaw_external_repeated_challenge.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_WholeImageRaw"
+      }
+    },
+    "ForgeLens_GenImage_WholeImageRaw_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_GenImage_WholeImageRaw"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalCal_benign.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "image_id": "image_id",
+        "probability": "probability"
+      },
+      "where": {
+        "record_type": "benign_prediction",
+        "model": "ForgeLens_ProGAN1600_GlobalCal"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalCal_external.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_GlobalCal"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalCal_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_GlobalCal"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalCal_operating_points.csv": {
+      "file": "S4_Operating_Policies.csv",
+      "columns": {
+        "model": "model",
+        "seed": "seed",
+        "fold": "fold",
+        "evaluation": "evaluation",
+        "probability_scope": "probability_scope",
+        "policy": "policy",
+        "target": "target",
+        "threshold": "threshold",
+        "selection_fpr": "selection_fpr",
+        "selection_tpr": "selection_tpr",
+        "fpr": "fpr",
+        "tpr": "tpr",
+        "real_n": "real_n",
+        "fake_n": "fake_n",
+        "false_positives": "false_positives",
+        "false_negatives": "false_negatives",
+        "cost_fp_to_fn": "cost_fp_to_fn",
+        "prevalence": "prevalence",
+        "expected_calibration_cost": "expected_calibration_cost",
+        "expected_test_cost": "expected_test_cost"
+      },
+      "where": {
+        "record_type": "operating_point",
+        "model": "ForgeLens_ProGAN1600_GlobalCal"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalPatchFusion_benign.csv": {
+      "file": "S3_Model_Metrics.csv",
+      "columns": {
+        "image_id": "image_id",
+        "probability": "probability"
+      },
+      "where": {
+        "record_type": "benign_prediction",
+        "model": "ForgeLens_ProGAN1600_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalPatchFusion_external.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalPatchFusion_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_ProGAN1600_GlobalPatchFusion_operating_points.csv": {
+      "file": "S4_Operating_Policies.csv",
+      "columns": {
+        "model": "model",
+        "seed": "seed",
+        "fold": "fold",
+        "evaluation": "evaluation",
+        "probability_scope": "probability_scope",
+        "policy": "policy",
+        "target": "target",
+        "threshold": "threshold",
+        "selection_fpr": "selection_fpr",
+        "selection_tpr": "selection_tpr",
+        "fpr": "fpr",
+        "tpr": "tpr",
+        "real_n": "real_n",
+        "fake_n": "fake_n",
+        "false_positives": "false_positives",
+        "false_negatives": "false_negatives",
+        "cost_fp_to_fn": "cost_fp_to_fn",
+        "prevalence": "prevalence",
+        "expected_calibration_cost": "expected_calibration_cost",
+        "expected_test_cost": "expected_test_cost"
+      },
+      "where": {
+        "record_type": "operating_point",
+        "model": "ForgeLens_ProGAN1600_GlobalPatchFusion"
+      }
+    },
+    "ForgeLens_ProGAN1600_OfficialCanonical_external_repeated_challenge.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_OfficialCanonical"
+      }
+    },
+    "ForgeLens_ProGAN1600_OfficialCanonical_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_OfficialCanonical"
+      }
+    },
+    "ForgeLens_ProGAN1600_OfficialNative_external_repeated_challenge.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_OfficialNative"
+      }
+    },
+    "ForgeLens_ProGAN1600_WholeImageRaw_external_repeated_challenge.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_WholeImageRaw"
+      }
+    },
+    "ForgeLens_ProGAN1600_WholeImageRaw_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_ForgeLens_ProGAN1600_WholeImageRaw"
+      }
+    },
+    "Previous_M4_external.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_Previous_M4"
+      }
+    },
+    "Previous_M4_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_Previous_M4"
+      }
+    },
+    "Previous_M5_external.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_Previous_M5"
+      }
+    },
+    "Previous_M5_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_Previous_M5"
+      }
+    },
+    "Previous_UFD_external.csv": {
+      "file": "S2_External_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_Previous_UFD"
+      }
+    },
+    "Previous_UFD_main.csv": {
+      "file": "S1_Main_Cohort_Manifest.csv",
+      "columns": {
+        "image_id": "image_id",
+        "artifact_id": "artifact_id",
+        "group": "group",
+        "category": "category",
+        "generator": "generator",
+        "label": "label",
+        "probability": "probability_Previous_UFD"
+      }
+    },
+    "S12_proposed_interface.csv": {
+      "metadata": "S12_proposed_interface.csv",
+      "columns": {
+        "Operation": "Operation",
+        "Input or output": "Input or output",
+        "Evidence control": "Evidence control"
+      }
+    },
+    "S2_alpha_mask_distributions.csv": {
+      "metadata": "S2_alpha_mask_distributions.csv",
+      "columns": {
+        "grouping": "grouping",
+        "condition": "condition",
+        "sources": "sources",
+        "support_median": "support_median",
+        "support_q25": "support_q25",
+        "support_q75": "support_q75",
+        "support_min": "support_min",
+        "support_max": "support_max"
+      }
+    },
+    "S3_domain_accounting.csv": {
+      "metadata": "S3_domain_accounting.csv",
+      "columns": {
+        "category": "category",
+        "supplied_rows": "supplied_rows",
+        "quota_selected": "quota_selected",
+        "post_product_screen": "post_product_screen",
+        "retained_originals": "retained_originals",
+        "retained_edits": "retained_edits",
+        "complete_edit_sources": "complete_edit_sources"
+      }
+    },
+    "S4_recovered_partition_audit.csv": {
+      "metadata": "S4_recovered_partition_audit.csv",
+      "columns": {
+        "experiment": "experiment",
+        "model": "model",
+        "evaluation": "evaluation",
+        "rows": "rows",
+        "groups": "groups",
+        "group_role_exclusivity": "group_role_exclusivity"
+      }
+    },
+    "S7_figure_sample_ids.csv": {
+      "metadata": "S7_figure_sample_ids.csv",
+      "columns": {
+        "category": "category",
+        "artifact_id": "artifact_id",
+        "selection_rule": "selection_rule"
+      }
+    }
+  },
+  "metadata_records": {
+    "S12_proposed_interface.csv": [
+      {
+        "Operation": "POST /v1/evidence",
+        "Input or output": "Claim/order reference and preserved file",
+        "Evidence control": "Evidence identifier, byte hash and access record"
+      },
+      {
+        "Operation": "POST /v1/analysis-jobs",
+        "Input or output": "Evidence ID, input condition, model/policy version",
+        "Evidence control": "Idempotency key and job ID"
+      },
+      {
+        "Operation": "GET /v1/analysis-jobs/{id}",
+        "Input or output": "Status, scores and diagnostic artifact references",
+        "Evidence control": "Processing failures remain explicit"
+      },
+      {
+        "Operation": "POST /v1/claims/{id}/review",
+        "Input or output": "Reasoned disposition and supporting records",
+        "Evidence control": "Reviewer identity, timestamps and audit history"
+      }
+    ],
+    "S2_alpha_mask_distributions.csv": [
+      {
+        "grouping": "category",
+        "condition": "Amazon_Fashion",
+        "sources": "30",
+        "support_median": "0.08678817749023438",
+        "support_q25": "0.0426788330078125",
+        "support_q75": "0.13262271881103516",
+        "support_min": "0.013149261474609375",
+        "support_max": "0.3659553527832031"
+      },
+      {
+        "grouping": "category",
+        "condition": "Cell_Phones_and_Accessories",
+        "sources": "23",
+        "support_median": "0.06544876098632812",
+        "support_q25": "0.04221916198730469",
+        "support_q75": "0.12542724609375",
+        "support_min": "0.0293426513671875",
+        "support_max": "0.308685302734375"
+      },
+      {
+        "grouping": "category",
+        "condition": "Electronics",
+        "sources": "21",
+        "support_median": "0.10781097412109375",
+        "support_q25": "0.07114791870117188",
+        "support_q75": "0.14958572387695312",
+        "support_min": "0.0274658203125",
+        "support_max": "0.3622856140136719"
+      },
+      {
+        "grouping": "category",
+        "condition": "Grocery_and_Gourmet_Food",
+        "sources": "13",
+        "support_median": "0.15682220458984375",
+        "support_q25": "0.12024307250976562",
+        "support_q75": "0.18009185791015625",
+        "support_min": "0.07450103759765625",
+        "support_max": "0.2354583740234375"
+      },
+      {
+        "grouping": "category",
+        "condition": "Home_and_Kitchen",
+        "sources": "24",
+        "support_median": "0.12647628784179688",
+        "support_q25": "0.0796661376953125",
+        "support_q75": "0.18020153045654297",
+        "support_min": "0.019229888916015625",
+        "support_max": "0.2692985534667969"
+      },
+      {
+        "grouping": "category",
+        "condition": "Tools_and_Home_Improvement",
+        "sources": "29",
+        "support_median": "0.10134506225585938",
+        "support_q25": "0.06299591064453125",
+        "support_q75": "0.13879013061523438",
+        "support_min": "0.01497650146484375",
+        "support_max": "0.24580001831054688"
+      },
+      {
+        "grouping": "intended_damage",
+        "condition": "cracked",
+        "sources": "88",
+        "support_median": "0.0965423583984375",
+        "support_q25": "0.06387138366699219",
+        "support_q75": "0.1453084945678711",
+        "support_min": "0.018199920654296875",
+        "support_max": "0.3622856140136719"
+      },
+      {
+        "grouping": "intended_damage",
+        "condition": "dented",
+        "sources": "30",
+        "support_median": "0.085479736328125",
+        "support_q25": "0.038016319274902344",
+        "support_q75": "0.12710094451904297",
+        "support_min": "0.013149261474609375",
+        "support_max": "0.2354583740234375"
+      },
+      {
+        "grouping": "intended_damage",
+        "condition": "spoiled",
+        "sources": "1",
+        "support_median": "0.10836410522460938",
+        "support_q25": "0.10836410522460938",
+        "support_q75": "0.10836410522460938",
+        "support_min": "0.10836410522460938",
+        "support_max": "0.10836410522460938"
+      },
+      {
+        "grouping": "intended_damage",
+        "condition": "torn",
+        "sources": "21",
+        "support_median": "0.13523101806640625",
+        "support_q25": "0.10828781127929688",
+        "support_q75": "0.20239639282226562",
+        "support_min": "0.02056884765625",
+        "support_max": "0.3659553527832031"
+      }
+    ],
+    "S3_domain_accounting.csv": [
+      {
+        "category": "Amazon_Fashion",
+        "supplied_rows": "242",
+        "quota_selected": "50",
+        "post_product_screen": "40",
+        "retained_originals": "37",
+        "retained_edits": "60",
+        "complete_edit_sources": "30"
+      },
+      {
+        "category": "Cell_Phones_and_Accessories",
+        "supplied_rows": "201",
+        "quota_selected": "50",
+        "post_product_screen": "39",
+        "retained_originals": "35",
+        "retained_edits": "46",
+        "complete_edit_sources": "23"
+      },
+      {
+        "category": "Electronics",
+        "supplied_rows": "198",
+        "quota_selected": "50",
+        "post_product_screen": "33",
+        "retained_originals": "32",
+        "retained_edits": "42",
+        "complete_edit_sources": "21"
+      },
+      {
+        "category": "Grocery_and_Gourmet_Food",
+        "supplied_rows": "134",
+        "quota_selected": "50",
+        "post_product_screen": "15",
+        "retained_originals": "15",
+        "retained_edits": "26",
+        "complete_edit_sources": "13"
+      },
+      {
+        "category": "Home_and_Kitchen",
+        "supplied_rows": "121",
+        "quota_selected": "50",
+        "post_product_screen": "33",
+        "retained_originals": "32",
+        "retained_edits": "48",
+        "complete_edit_sources": "24"
+      },
+      {
+        "category": "Tools_and_Home_Improvement",
+        "supplied_rows": "154",
+        "quota_selected": "50",
+        "post_product_screen": "31",
+        "retained_originals": "31",
+        "retained_edits": "58",
+        "complete_edit_sources": "29"
+      }
+    ],
+    "S4_recovered_partition_audit.csv": [
+      {
+        "experiment": "0160b93560a15f3cf110d2dd",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "01f5eb940744918265abdd51",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "020c3dd868e958749627bc6e",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0417415fdfdd82f88f0c3c5f",
+        "model": "M6_patch",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "04a1a6db7119043128d1be57",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "08d963e0ec5b55468d5a572c",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "08f185d499b5ed0383de7831",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "097a2896b6f2bcca11c5b99f",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "097d5cf6a3c62b4bbf52586a",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0b4bf5bc3d22c0fee3a81009",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0c0b3bd743573e2cffcb6235",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0c423331e2ac2f995eab4f9e",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "356",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0d385339e4df228120f5daae",
+        "model": "M1",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0d523bc9d747af34cc77f5cc",
+        "model": "M6_patch",
+        "evaluation": "product_disjoint_sensitivity",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0d626e07634267a8c283fc53",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0f3f7eff638183f162184cf2",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "318",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "0f4d205ebbc5bac177ee264c",
+        "model": "M1",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "10a3b995278a4adc378cb943",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "11f6f57cfdd8156d76dc28da",
+        "model": "M1",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "12de5004a817c6d4d3c48efe",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "138fa22239cd954ffd142846",
+        "model": "M5",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "139d979cf4ca85769aba8a42",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "146c0ec41fe7c50fa477fc46",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "330",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "14c06458bfd49cf75b736428",
+        "model": "M6_patch",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "1672416544b593e114bb7fbc",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "17b55454d56edcdb31814202",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "330",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "18823f648a70b6c6d4e2cdc7",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "1a76619ca41f8d30a99cc0fc",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "300",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "1a8563afced42219efc2e79c",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "1b3727188888eea5f9aee919",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "1bcafa5247a14a6034100b64",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "2148f65a6af668e5c74cbce1",
+        "model": "M1",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "228b9fcde4824e4f925e7a3f",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "22a0186e267a1cf262f6fc27",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "23dc5ce9e68bb45ee1a8c149",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "247ab490873f7a7a70367297",
+        "model": "M1",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "24e178f3ff308da0ca4acf05",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "24fad0977777adc19e6ec02f",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "255298ed3d42c253126efa08",
+        "model": "M5",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "2e28ddec9de72271c36878ea",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "33955efd882e72333d5d96ca",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "360",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "35c4f5e469d293c241de99b8",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "373fa40e92f636ac22565c8f",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "378e8da924d5b990652718b2",
+        "model": "M5",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "3cfa5e18fd9b8dfd397bc42a",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "3d1c2ca60b8cec7db38f502e",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "3d3ee685ea07b6f40fc9dc24",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "3d4e38702e02c3a1fa9d2c46",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "3db0a1f70189edca9be5850b",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "3dff131133ffa933d3627fb4",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "3e88712640619326965f6ed9",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4023d25ddae0ceed6a98ceb6",
+        "model": "M1",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "417e9bca361186770560554d",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "439599fa7f91a5cb73dd44bf",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4446d4e4ff9ac5e3631b87f1",
+        "model": "M1",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "449aafc69e320476c7d756cf",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4557f0a86a3b9e6393e44676",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "479cab374fde529f3778b158",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "47de1ddcd6c92522414f06b1",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4807c9982dfbdb820f42fafd",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4a7a415b6f1f508d04109fc2",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4b566c7b4bc8b5caf0a46345",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4b7e334b13ebc158c1592883",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4bb6e6af2d3e1204599442af",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4e14e1cc9d90780788fb3496",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4e4a5e03f5265f6e457fb221",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "4f1d3b49cae7f80299e2a5a5",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "330",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "50bb61b4d57685b9e8433012",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "524cbb3ccfe82cd047a82bc6",
+        "model": "M1",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "52cfb358c926dea27b6065a2",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "54c00fc5436a83374e70c36b",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "5975b18072bfb41dc4dbe588",
+        "model": "M6_patch",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "59c4b1712251dcfddcbab6d7",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "360",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "5c070e65b6781d9e7c0d22bc",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "5cc155a6e989effaa7d424b9",
+        "model": "M5",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "60d3017df002b9d9a2f4b680",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "356",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "60e7d69bf9a050ae658ada2d",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "64ada79d1f2e6776917c7e68",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "655adb9d844cd0f8bee06f02",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "66c575e520dda35c27427f8d",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "6762a8d43f4aa592efc6ead1",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "677f05d514e909e118798167",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "318",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "683bd298e7b102e7ee38aca3",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "68cc9207a819841078706011",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "6a26af974962b3d4a48922f7",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "312",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "6dfcba4663a6e58bc0a7a7e4",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "73e2ba4d639c674e88e5bcc8",
+        "model": "M6_patch",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "75cd180174801c6bdf62f985",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "75f99e508103dad2b0c13287",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "7685f7cd98cacd828bf50d33",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "778ddeba2f741c9063d8cfa5",
+        "model": "M6_patch",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "783b64f5fce607f1cf4f0e6f",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "362",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "785377e47463f7cd973bd058",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "360",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "7b2d82164e62d3150a690d4a",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "7bf0d731d2272ab196389b17",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "7d19cf652faea9f744062ffb",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "7d3967f3d1b88433e2dd49b1",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "362",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "7ec0da1228d2453a2ea5915a",
+        "model": "M5",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "7f5194ad142e3f598263a4d8",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "80a16a91a05add3be27b2f42",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "827a48c2b21e9164396e77f1",
+        "model": "M6_patch",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8510040fac2513d2ec89a8be",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "87e840588f2f7b09f75ee584",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "897d659a78ae3e9fcc6f0e57",
+        "model": "M6_patch",
+        "evaluation": "product_disjoint_sensitivity",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "89997c81f02cb67f562da93e",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "356",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8b4d69d360b105ba3949c0a5",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8bc30b8491603a69d66d721a",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8c6e8a39f14981b1e755829b",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8e5ed332ec9c7b3f156af69e",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8f31b874ab0f0d76fe78f36d",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8fb2881fe3f6157c7698e3dc",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8fb69cd7fbcc5b89ea11f9a2",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "8fd41b04742eb17a17d93ab8",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "925ea5d2335d35033c561476",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "92f7c6e7a8d7abc445108ac9",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "934b5b2bf99de80628cdda1a",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "9374b4f351fc6fdd082a8384",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "937bd56e6ac9730a96e6bd1e",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "94ac03d93518d31c8adaec4a",
+        "model": "M1",
+        "evaluation": "product_disjoint_sensitivity",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "98ab0621d7108a8dfcc634cf",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "300",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "9ac682d36801c2ea3d8189ca",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "9bae2565de8d4147a48bb130",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "9d40e09c3e9ecb0fb3d05456",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "9e94286ef09cee9432c4301d",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "312",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a05b921f43b502836a820140",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a1c0ab6a0b6d162c4939c613",
+        "model": "M1",
+        "evaluation": "product_disjoint_sensitivity",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a2d59fad069788e979961f8f",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a3ff56bfa82769931ace8f4c",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a68d736a62b437de862fa183",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a6d434c9373140befe6a8241",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a8fc03905de7acfe23ecda4d",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "346",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "a9a87ed8fa5915402fb349f4",
+        "model": "M1",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "aae7e731e83825a718e1c04d",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ac20c664b6d81792c920ca3a",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "356",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ace04803d2400e81f7ac1cc0",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ace8d4272437350d8e4d25ee",
+        "model": "M6_patch",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ad1a2c612887fb4c6f3b7912",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ad671f940f01c43571a11534",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "356",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ad9a2425e63bba4fe66cb264",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ae9d14b61d71d3304aedc832",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "afe541ef18b22b906ba00e16",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "afe662735d00aea7a7d52b29",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b37b734e72f94db55874c939",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b3d1180df38c1c5708e871fd",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "312",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b44d8df42fcaeea28e47892d",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b5c1a91293c767cf23a6bac9",
+        "model": "M1",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b76410640e8da0cb5bf9c6c4",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b78f67d8db82c268fdecba49",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b8b870148e63e5352bddbf2d",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b8f1f556eba02c5cf4718951",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b94500834436ca873199918d",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "b9548eac48d10e7893d7eb6f",
+        "model": "M5",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "bbbd9850490b8877a1e0337d",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "bc9c171c47e56fb59e72ed86",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c3008e3d67571b5415b813c0",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c35550099fd01dc29fa7ae51",
+        "model": "M5",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c4ba097dc73d133d8b0ce904",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c70c960a6504a2d7f8e59008",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c7efae2e0342c5883258bf4d",
+        "model": "M5",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c8593cc2d339d39382a42ed3",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "346",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c8fe5ea613ca9a64535d5a82",
+        "model": "M6_patch",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "356",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "c9ed65a60897eea0bcedb4b8",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "cb183eb14deb5444ee40dba8",
+        "model": "M6_patch",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "cbb9f3725f74e33eec5a6a19",
+        "model": "M1",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "cda232bb0f027d182de8499b",
+        "model": "C0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "cedde1c030d9e34c295c2b74",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "300",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "cf5b390e93f17321225a7b55",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d03c3252f7e20c396439d745",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d1805fbf06557b6b34be22bf",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d23c19f05574b18d8c4deff3",
+        "model": "M6_patch",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d26a3e39ee771158ef093f14",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d3d10c072e4a8a1e3e5a3ca0",
+        "model": "M5",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d3f4a0adc572c1302c425668",
+        "model": "M5",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "362",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d5807cd17c8baa2e760cec24",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d5f0bb641c76cf2315f365fc",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d6718009183ade8195b5db0e",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d6fc9a12d556a271ac4e0be8",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "d8ccc2afad428f7959360431",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "da3f4ebd7553bcb5914e9952",
+        "model": "M6_patch",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "de18d72c0c027e55dd9ee85c",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e0544e77734b02fe8f016ceb",
+        "model": "M5",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e097607910890231d76605e5",
+        "model": "M6_patch",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e0a58e6aac0226a34de79209",
+        "model": "T0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e1edb8934d67ff95d191d16d",
+        "model": "M1",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e333654c5c87c713d9ef5ea1",
+        "model": "M1GB",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e345471b246d54f570193a5c",
+        "model": "M5",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e368f2fa3363074dfb2d2147",
+        "model": "M6_patch",
+        "evaluation": "product_disjoint_sensitivity",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e4895c49b994788d85190a94",
+        "model": "M1",
+        "evaluation": "product_disjoint_sensitivity",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e60b8776d32541aef3a67a6b",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e8232e7dc7b9700db90ef982",
+        "model": "M5",
+        "evaluation": "cross_generator_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e8545ada24e480b0fff320e6",
+        "model": "M1",
+        "evaluation": "LODO_category",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e87286468e77f699e3f3d0e8",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e881f4815a21366e967dfeb0",
+        "model": "M5",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "e9f6281345dadac08a06fda6",
+        "model": "B1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ea481d4543aac1303f664d20",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ea95b9ec18430331def7d56e",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "eb48af618cfb2e042dbc7b66",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ebde570e7b0e9dd384cad75c",
+        "model": "M1",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ed0c74bd6b047f581d860076",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "ee2f6cc57d1e4dd1e7d0e47c",
+        "model": "M6_patch",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "f167049f10ed4ab7cdc80e54",
+        "model": "UFD",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "f197451b70fbca92dc11e12b",
+        "model": "B3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "f3139ade3e01ead1aa6516ce",
+        "model": "B2",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "f37c39e1f525cbb537b2793d",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "346",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "f90f62931b4f58a845453175",
+        "model": "M1",
+        "evaluation": "LOLO_synthetic_damage",
+        "rows": "318",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "f9b947d1e967d1232a0fdb81",
+        "model": "M5",
+        "evaluation": "LOGO_source_disjoint",
+        "rows": "322",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "fa742a67a97776a2c48cacd9",
+        "model": "M6_patch",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "fa7b9f7b71c7c76d1a9a9150",
+        "model": "M3",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "faa034ba886cd14d1af73a6f",
+        "model": "M4",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      },
+      {
+        "experiment": "fe8ac24f9d2a2840d071bf5f",
+        "model": "E0",
+        "evaluation": "main",
+        "rows": "462",
+        "groups": "182",
+        "group_role_exclusivity": "True"
+      }
+    ],
+    "S7_figure_sample_ids.csv": [
+      {
+        "category": "Amazon_Fashion",
+        "artifact_id": "0bfeb3429be0f4cb2ce73447",
+        "selection_rule": "Lexicographically first retained SD1.5 source per category; no score selection"
+      },
+      {
+        "category": "Cell_Phones_and_Accessories",
+        "artifact_id": "0adf0e519c224aef26404d41",
+        "selection_rule": "Lexicographically first retained SD1.5 source per category; no score selection"
+      },
+      {
+        "category": "Electronics",
+        "artifact_id": "08f8531d452bd190a6801624",
+        "selection_rule": "Lexicographically first retained SD1.5 source per category; no score selection"
+      },
+      {
+        "category": "Grocery_and_Gourmet_Food",
+        "artifact_id": "0585404db77195c08d35d085",
+        "selection_rule": "Lexicographically first retained SD1.5 source per category; no score selection"
+      },
+      {
+        "category": "Home_and_Kitchen",
+        "artifact_id": "098c0a69ca986445f51b990e",
+        "selection_rule": "Lexicographically first retained SD1.5 source per category; no score selection"
+      },
+      {
+        "category": "Tools_and_Home_Improvement",
+        "artifact_id": "01591886060e1317d8f8c75b",
+        "selection_rule": "Lexicographically first retained SD1.5 source per category; no score selection"
+      }
+    ]
+  }
+}

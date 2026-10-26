@@ -1,0 +1,65 @@
+{
+  "version": "RefundProof-ForgeLens-next-1.0",
+  "models": {
+    "ForgeLens_GenImage": {
+      "id": "1ZGmFPDJFtiJBxe3_mQGP_ZKPO_XXzjWc",
+      "bytes": 1816067013,
+      "wsgm": 4,
+      "sha256": "05a8b0ac9a36f4ebf4ce7b0031471326463acff3955be462251f2fe13808ce8f"
+    },
+    "ForgeLens_ProGAN1600": {
+      "id": "1JxfFqVrX50U5FFR_Wm1BGYVtIi-IX_sH",
+      "bytes": 1835013669,
+      "wsgm": 12,
+      "sha256": "968ee215ef4109eaa395a45612fe0273196c92f3d072d6b47b378e90ddd1766d"
+    }
+  },
+  "repository_commit": "9660c91d0c40dcdf3bef5155bd1c38ec866db13e",
+  "seeds": [
+    42,
+    123,
+    777
+  ],
+  "fpr_targets": [
+    0.01,
+    0.05,
+    0.1
+  ],
+  "cost_ratios": [
+    2,
+    5,
+    10,
+    20
+  ],
+  "prevalences": [
+    0.01,
+    0.05,
+    0.1,
+    0.25,
+    0.5
+  ],
+  "run_external": true,
+  "run_compression": true,
+  "bootstrap": 500,
+  "main_image_identity": "b034bb73bc1d86dc9e27764f34cd904aabd589a8853bc69365ab79af4c311366",
+  "external_identity": "70b103e0b10fd94790080349147a7d9cc962d6ba86259b576a722b644ce7e301",
+  "folds": 3,
+  "inner_calibration_group_fraction": 0.2,
+  "head_C": 0.1,
+  "calibrator_C": 1,
+  "fusion_features": [
+    "global_logit",
+    "patch_mean",
+    "patch_std",
+    "top2_mean",
+    "patch_min"
+  ],
+  "external_interpretation": "Previously inspected dataset: repeated challenge, never used for fitting or hyperparameter choice",
+  "calibration_and_policies": "Training-source groups only; external ensemble averages frozen development-fold probabilities",
+  "input_preprocessing": "Canonical 512 gray letterbox; official center crop, separate whole-image bicubic view, nine overlapping 224px tiles; external native crop reported separately",
+  "benign_controls": "Diagnostics only, not relabeled as authentic training images",
+  "human_verified": false,
+  "method_description": "Frozen global and overlapping-tile logits with grouped logistic score fusion and separate sigmoid calibration",
+  "source_protocol_sha256": "6cd1fef2fe146200fa1c8f3e85bceb77366d092bfbc916e1d4b9e16a6a53c2fc",
+  "recorded_run_signature": "538f4f919d71a27a80c502a470d8a0496075cdf3f951082cc2b4b0f6ff1d8c5a"
+}

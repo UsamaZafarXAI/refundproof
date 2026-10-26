@@ -1,0 +1,15 @@
+{
+  "zip_crc": "passed",
+  "all_file_hashes": 1143,
+  "metric_rows_recomputed": 24,
+  "metric_agreement": "within 1e-10",
+  "group_disjoint_fold_splits": 36,
+  "final_main_probability_averaging": "passed",
+  "calibration_selection_FPR_constraints": "passed",
+  "human_annotation": {
+    "annotators_reported": 2,
+    "review_status": "completed, reported by authors",
+    "annotation_records_in_archive": false,
+    "agreement_statistics_in_archive": false
+  }
+}
