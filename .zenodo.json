@@ -1,0 +1,29 @@
+{
+  "title": "RefundProof reproducibility archive",
+  "upload_type": "software",
+  "description": "Code, numerical datasets, protocol records and fitted score heads for Validating AI-Assisted Image Screening for Digital Evidence: A Framework for Trustworthy Refund Forensics.",
+  "creators": [
+    {
+      "name": "Zafar, Usama",
+      "affiliation": "National Chung Cheng University",
+      "orcid": "0009-0008-9320-5019"
+    },
+    {
+      "name": "Wu, Fan",
+      "affiliation": "National Chung Cheng University"
+    },
+    {
+      "name": "Hsieh, Yin-Chia",
+      "affiliation": "Chaoyang University of Technology",
+      "orcid": "0009-0005-2833-4429"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "digital forensics",
+    "image manipulation",
+    "calibration",
+    "e-commerce",
+    "reproducibility"
+  ]
+}

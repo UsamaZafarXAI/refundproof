@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+outputs/
+raw_data/
+*.safetensors
+*.ckpt
+*.pth
+*.pt
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.docx

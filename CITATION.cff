@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "Validating AI-Assisted Image Screening for Digital Evidence: A Framework for Trustworthy Refund Forensics"
+message: "Please cite this archive when using its code or numerical records."
+type: software
+authors:
+  - family-names: Zafar
+    given-names: Usama
+    orcid: "https://orcid.org/0009-0008-9320-5019"
+    affiliation: "National Chung Cheng University"
+  - family-names: Wu
+    given-names: Fan
+    affiliation: "National Chung Cheng University"
+  - family-names: Hsieh
+    given-names: Yin-Chia
+    orcid: "https://orcid.org/0009-0005-2833-4429"
+    affiliation: "Chaoyang University of Technology"
+repository-code: "https://github.com/UsamaZafarXAI/refundproof"
+license: MIT
